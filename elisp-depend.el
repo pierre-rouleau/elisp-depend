@@ -1,4 +1,4 @@
-;;; elisp-depend.el --- Parse depend libraries of elisp file. -*-lexical-binding: t-*-
+;;; elisp-depend.el --- Parse depend libraries of elisp file  -*-lexical-binding: t-*-
 
 ;; Copyright (C) 2009  Andy Stewart
 ;; Copyright (C) 2010-2012 Tom Breton
@@ -206,7 +206,7 @@ Every library that has a parent directory in
 
 (defun elisp-depend-read-tree (&optional buffer)
   "Return the tree given by reading the BUFFER as elisp.
-The top level is presented as a list, as if the buffer contents had been
+The top level is presented as a list, as if the buffer contents had been.
 \(list CONTENTS...\)"
   (let ((tree '()))
     (with-current-buffer (or buffer (current-buffer))
@@ -225,7 +225,7 @@ The top level is presented as a list, as if the buffer contents had been
 ;; Borrowed from format
 (defun elisp-depend-proper-list-p (list)
   "Return t if LIST is a proper list.
-A proper list is a list ending with a nil cdr, not with an atom"
+A proper list is a list ending with a nil cdr, not with an atom."
   (when (listp list)
     (while (consp list)
       (setq list (cdr list)))
@@ -238,8 +238,7 @@ A proper list is a list ending with a nil cdr, not with an atom"
 ;; by arglists, let forms, etc.
 
 (defun elisp-depend-get-syms-recurse (sexp n)
-  "Gets syms from a form that ignores the first N arguments and
-recurses on the rest."
+  "Get syms from form that ignores first N arguments and recurses on the rest."
   (if (elisp-depend-proper-list-p sexp)
       (cl-mapcan #'elisp-depend-sexp->sym-list (nthcdr n sexp))
     ;; If it's a dotted list, complain.
@@ -319,7 +318,6 @@ This function does not expand macros."
                                             current-filename
                                             built-in
                                             see-vars)
-  ""
   (let ((symbol-seen '())
         (dependencies '()))
     ;; Poor-man's dolist
